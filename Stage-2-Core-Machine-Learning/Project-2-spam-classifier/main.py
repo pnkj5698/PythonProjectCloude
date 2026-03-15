@@ -26,10 +26,21 @@ X_train, X_test, y_train, y_test = train_test_split(
     df["message"], df["label"], test_size=0.2, random_state=42
 )
 
+# print("X_train (first 3 messages):")
+# print(X_train.head(3))
+# print("\ny_train (first 3 labels):")
+# print(y_train.head(3))
+
 # Convert text to numbers using TF-IDF
 vectorizer = TfidfVectorizer()
 X_train_tfidf = vectorizer.fit_transform(X_train)
 X_test_tfidf = vectorizer.transform(X_test)
+
+# What is TF-IDF?
+# TF-IDF stands for:
+
+# TF = Term Frequency — how often a word appears in THIS message
+# IDF = Inverse Document Frequency — how rare the word is across ALL messages
 
 # Train Naive Bayes model
 model = MultinomialNB()
